@@ -28,7 +28,7 @@ ALLOWED_HOSTS = []
 
 # Template directories
 
-TEMPLATE_DIRS = ('/home/gawaine/Programming/repos/rango/tango_with_django_project/templates',)
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
+    'polls',
 )
 
 

@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+import datetime
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('polls', '0001_initial'),
+    ]
+
+    operations = [
+        migrations.RemoveField(
+            model_name='question',
+            name='pub_date',
+        ),
+        migrations.RemoveField(
+            model_name='question',
+            name='time',
+        ),
+        migrations.AddField(
+            model_name='question',
+            name='date_published',
+            field=models.DateTimeField(default=datetime.datetime.now, blank=True),
+            preserve_default=True,
+        ),
+    ]
