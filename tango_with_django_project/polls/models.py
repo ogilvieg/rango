@@ -5,7 +5,7 @@ from datetime import  datetime
 
 class Question(models.Model):
     question_text = models.CharField(max_length=128)
-    date_published = models.DateTimeField(default=datetime.now, blank=True)
+    pub_date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __unicode__(self):
         return self.question_text
