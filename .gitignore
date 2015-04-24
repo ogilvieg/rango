@@ -3,6 +3,11 @@
 *.pyc
 *.pyo
 
+# Editors/IDEs #
+################
+*/.idea/workspace.xml
+*/.idea/tasks.xml
+
 # Compiled source #
 ###################
 *.com
