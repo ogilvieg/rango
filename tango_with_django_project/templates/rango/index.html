@@ -21,8 +21,9 @@
             <strong>There are no categories present.</strong>
         {% endif %}
 
-        <a href="/rango/about/">About</a> |
-
+        <a href="{% url 'rango:about' %}">About</a> <br></br>
+        <a href="{% url 'rango:add_category' %}">Form: Add Category</a> <br></br>
+        <a href="{% url 'polls:index' %}">Poll Application</a> <br></br>
 
         <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
     </body>

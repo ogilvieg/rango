@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from models import Category, Page
+from forms import CategoryForm
 
 # Create your views here.
 def index(request):
@@ -35,3 +36,25 @@ def category(request, category_name_slug):
 
 
     return render(request, 'rango/category.html', context_dict)
+
+
+def add_category(request):
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+
+        if form.is_valid():
+            # Save the new category to the database
+            form.save(commit=True)
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return  index(request)
+        else:
+            # The supplied form contained errors - just print them to the terminal
+            print form.errors
+    else:
+        # If the request was not a POST, display the form to enter details.
+        form = CategoryForm()
+
+    return render(request, 'rango/add_category.html', {'form': form})
