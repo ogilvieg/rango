@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Rango</title>
-</head>
-<body>
+{% extends 'rango/base.html' %}
+
+{% block title %}Rango - Add a Page{% endblock %}
+{% block body_block %}
 
 <h1>{{ category.name }}: Add a Page</h1>
 
@@ -15,13 +12,19 @@
         {% endfor %}
 
         {% for field in form.visible_fields %}
-            <font color="red"> {{ field.errors }}</font>
+
+            {% if field.errors %} <!--If there are errors with show alerts-->
+                <div class="alert alert-danger" role="alert">
+                        <p>{{ field.errors }}</p>
+                </div>
+            {% endif %}
+
             {{ field.help_text }}
             {{ field }}<br/>
+
         {% endfor %}
 
         <input type="submit" name="submit" value="Add Page" />
     </form>
 
-</body>
-</html>
+{% endblock %}
