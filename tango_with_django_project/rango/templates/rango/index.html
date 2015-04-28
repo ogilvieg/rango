@@ -1,58 +1,14 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 
 {% load staticfiles %}
 
-<html>
-
-    <head>
-        <meta charset="UTF-8">
-        <title>Basic Bootstrap Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-
-        <style>
-            body { padding-bottom: 70px; }
-        </style>
-
-
-    </head>
-<body>
-
-    <!-- Navigation Bar w/ Main Links-->
-
-     <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Gman Inc.</a>
-        </div>
-        <div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Applications
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Rango</a></li>
-                <li><a href="{% url 'polls:index' %}">Poll Application</a></li>
-                <li><a href="{% url 'rango:add_category' %}">Form: Add Category</a></li>
-              </ul>
-            </li>
-            <li><a href="{% url 'rango:about' %}">About</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-phone"></span> Contact</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  <!--End of navigation bar at the very top of the page-->
+{% block title %}Rango Homepage{% endblock %}
+{% block body_block %}
 
 
     <div class="container">
       <div class="jumbotron">
-        <h1>Savory Code & Tutorials</h1>
+        <h1>Welcome to Rango's Blog</h1>
         <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
         responsive, mobile-first projects on the web.</p>
 
@@ -62,39 +18,22 @@
       </div>
 
         {% if categories %}
-        <ul class="nav nav-pills">
-            {% for category in categories %}
-            <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
-            {% endfor %}
-        </ul>
+            <ul class="list-group">
+                {% for category in categories %}
+                    <li class="list-group-item"><a href="/rango/category/{{ category.slug }}">{{ category.name }} <span>{{category.likes}}</span></a></li>
+                {% endfor %}
+            </ul>
         {% else %}
-            <strong>There are no categories present.</strong>
+            <div class="alert alert-info" role="alert">
+                <strong>There are no categories present.</strong>
+            </div>
         {% endif %}
-      <p>This is some text.</p>
-      <p>This is another text.</p>
+
+
+
+
         <img width="200" height="200" src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
     </div>
 
 
-
-    <!--Navigation bar at the very bottom of the screen-->
-    <nav class="navbar navbar-inverse navbar-fixed-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <footer>
-
-                            <p class="navbar-text">&copy; Copyright 2015 Gman Inc.</p>
-
-                    </footer>
-                </div>
-            </div>
-        </div>
-
-    </nav>
-
-
-    <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-</body>
-</html>
+{% endblock %}
