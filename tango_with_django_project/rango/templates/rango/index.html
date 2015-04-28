@@ -9,19 +9,25 @@
         <title>Basic Bootstrap Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+        <style>
+            body { padding-bottom: 70px; }
+        </style>
+
+
     </head>
 <body>
 
     <!-- Navigation Bar w/ Main Links-->
 
-     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+     <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Rango</a>
+          <a class="navbar-brand" href="#">Gman Inc.</a>
         </div>
         <div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
              <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Applications
               <span class="caret"></span></a>
@@ -32,7 +38,7 @@
               </ul>
             </li>
             <li><a href="{% url 'rango:about' %}">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-phone"></span> Contact</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -71,8 +77,21 @@
 
 
 
+    <!--Navigation bar at the very bottom of the screen-->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <footer>
 
+                            <p class="navbar-text">&copy; Copyright 2015 Gman Inc.</p>
 
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+    </nav>
 
 
     <script src="http://code.jquery.com/jquery.min.js"></script>
