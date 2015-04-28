@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Basic Bootstrap Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    </head>
+<body>
+
+    <!-- Navigation Bar w/ Main Links-->
+
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Rango</a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+             <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Applications
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Rango</a></li>
+                <li><a href="{% url 'polls:index' %}">Poll Application</a></li>
+                <li><a href="{% url 'rango:add_category' %}">Form: Add Category</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'rango:about' %}">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <!--End of navigation bar at the very top of the page-->
+
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Savory Code & Tutorials</h1>
+        <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing
+        responsive, mobile-first projects on the web.</p>
+
+        <a href="#" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </a>
+      </div>
+
+        {% if categories %}
+        <ul class="nav nav-pills">
+            {% for category in categories %}
+            <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+      <p>This is some text.</p>
+      <p>This is another text.</p>
+        <img width="200" height="200" src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
+    </div>
+
+
+
+
+
+
+
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
