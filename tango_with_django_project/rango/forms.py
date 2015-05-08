@@ -1,5 +1,5 @@
 from django import forms
-from models import Page, Category
+from models import Page, Category, Contact
 
 
 class CategoryForm(forms.ModelForm):
@@ -42,3 +42,12 @@ class PageForm(forms.ModelForm):
         exclude = ('category',)
         #or specify the fields to include (i.e. not include the category field)
         #fields = ('title', 'url', 'views')
+
+class ContactForm(forms.ModelForm):
+    name = forms.CharField(max_length=128, help_text="Name: ", initial='Your name')
+    email = forms.EmailField(max_length=128, help_text="E-mail: ", initial='michael.jackson@gmail.com', required=True)
+    subject = forms.CharField(max_length=128, help_text="Subject: ", initial='Topic', required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)
+
+    class Meta:
+        model = Contact

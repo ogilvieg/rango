@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
-from models import Category, Page
-from forms import CategoryForm, PageForm
+from models import Category, Page, Contact
+from forms import CategoryForm, PageForm, ContactForm
 
 # Create your views here.
+
+
 def index(request):
     """
     Query all categories from database and retrieve top 5
@@ -14,9 +16,11 @@ def index(request):
 
     return render(request, 'rango/index.html', context_dict)
 
+
 def about(request):
 
 	return render(request, 'rango/about.html', {})
+
 
 def category(request, category_name_slug):
 
@@ -90,3 +94,23 @@ def add_page(request, category_name_slug):
     context_dict = {'form':form, 'category': cat}
 
     return render(request, 'rango/add_page.html', context_dict)
+
+
+def contact_us(request):
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            contact = form.save(commit=False)
+            contact.save()
+
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = ContactForm()
+
+    context_dict = {'form': form}
+
+    return render(request, 'rango/contact_us.html', context_dict)

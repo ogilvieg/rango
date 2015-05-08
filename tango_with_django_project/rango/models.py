@@ -26,3 +26,12 @@ class Page(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Contact(models.Model):
+    name = models.CharField(max_length=128)
+    email = models.EmailField()
+    subject = models.CharField(max_length=128)
+    message = models.CharField(max_length=256)
+
+    def __unicode__(self):
+        return self.email, self.subject

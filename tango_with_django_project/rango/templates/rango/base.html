@@ -25,7 +25,7 @@
      <!-- Navigation Bar w/ Main Links-->
 
      <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Gman Inc.</a>
         </div>
@@ -42,7 +42,7 @@
               </ul>
             </li>
             <li><a href="{% url 'rango:about' %}">About</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-phone"></span> Contact</a></li>
+            <li><a href="{% url 'rango:contact_us' %}"><span class="glyphicon glyphicon-phone"></span> Contact</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -56,15 +56,8 @@
      <div class="container">
      {% block body_block %}
 
-
-
-
-
     {% endblock %}
      </div>
-
-
-
 
 
 
